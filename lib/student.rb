@@ -9,6 +9,7 @@ class Student
   #  with DB[:conn]
 
   def initialize(name, grade, id = nil)
+    binding.pry
     @name = name
     @grade = grade
     @id = id
