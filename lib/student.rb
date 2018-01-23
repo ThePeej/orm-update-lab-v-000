@@ -11,7 +11,6 @@ class Student
   #  with DB[:conn]
 
   def initialize(name, grade, id = nil)
-    binding.pry
     @name = name
     @grade = grade
     @id = id
@@ -43,8 +42,8 @@ class Student
       self.update
     else
       sql = <<-SQL
-        INSERT INTO students
-        VALUES (name, grade)
+        INSERT INTO students (name, grade)
+        VALUES (?,?)
         SQL
       binding.pry
       DB[:conn].execute(sql, self.name, self.grade)
