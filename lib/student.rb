@@ -42,7 +42,7 @@ class Student
         INSERT INTO students
         VALUES (name, grade)
         SQL
-
+      binding.pry
       DB[:conn].execute(sql, self.name, self.grade)
       @id = DB[:conn].execute("SELECT last_instert_rowid() FROM students")[0][0]
     end
