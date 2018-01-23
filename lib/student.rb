@@ -58,7 +58,8 @@ class Student
     id = row[0]
     name = row[1]
     grade = row[2]
-    
+
     Student.new(name, grade, id)
+  end
 
 end
