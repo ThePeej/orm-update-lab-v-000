@@ -75,7 +75,7 @@ class Student
   end
 
   def update
-    binding.pry
+    # binding.pry
   end
 
 end
