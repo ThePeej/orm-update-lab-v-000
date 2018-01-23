@@ -38,14 +38,14 @@ class Student
     if self.id != nil
       self.update
     else
-    sql = <<-SQL
-      INSERT INTO students
-      VALUES (name, grade)
-      SQL
+      sql = <<-SQL
+        INSERT INTO students
+        VALUES (name, grade)
+        SQL
 
-    DB[:conn].execute(sql, self.name, self.grade)
-    @id = DB[:conn].execute("SELECT last_instert_rowid() FROM students")
-  end
+      DB[:conn].execute(sql, self.name, self.grade)
+      @id = DB[:conn].execute("SELECT last_instert_rowid() FROM students")
+    end
   end
 
 
