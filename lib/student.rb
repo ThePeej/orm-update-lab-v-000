@@ -44,17 +44,17 @@ class Student
         SQL
 
       DB[:conn].execute(sql, self.name, self.grade)
-      @id = DB[:conn].execute("SELECT last_instert_rowid() FROM students")
+      @id = DB[:conn].execute("SELECT last_instert_rowid() FROM students")[0][0]
     end
   end
 
-  def create(name, grade)
+  def self.create(name, grade)
     studuent = Student.new(name, grade)
     student.save
     student
   end
 
-  def new_from_db(row)
+  def self.new_from_db(row)
     id = row[0]
     name = row[1]
     grade = row[2]
@@ -62,15 +62,18 @@ class Student
     Student.new(name, grade, id)
   end
 
-  def find_by_name(name)
+  def self.find_by_name(name)
     sql = <<-SQL
       SELECT * FROM students
       WHERE name = ?
       SQL
 
-    row = DB[:conn].execute(sql, name)
+    row = DB[:conn].execute(sql, name)[0]
 
     self.new_from_db(row)
   end
 
+  def update
+
+  end
 end
