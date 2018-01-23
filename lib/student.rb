@@ -37,7 +37,6 @@ class Student
   end
 
   def save
-    binding.pry
     if self.id != nil
       self.update
     else
@@ -45,7 +44,6 @@ class Student
         INSERT INTO students (name, grade)
         VALUES (?,?)
         SQL
-      binding.pry
       DB[:conn].execute(sql, self.name, self.grade)
       @id = DB[:conn].execute("SELECT last_instert_rowid() FROM students")[0][0]
     end
